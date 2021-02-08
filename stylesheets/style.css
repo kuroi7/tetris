@@ -11,6 +11,9 @@ td {
   width: 10%; /* 横10マス */
   height: 5%; /* 縦20マス */
 }
+.default {
+  background-color: #455A64;
+}
 .stick {
   background-color: #03A9F4;
 }
