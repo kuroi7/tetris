@@ -68,3 +68,23 @@ setInterval(function() {
   fall();
   draw();
 }, 500); // 0.5秒ごとに表示を更新していきます
+
+function genBlock(blockNum) {
+  switch (blockNum) {
+      case 1:
+          array[0][5] = blockNum;
+          array[1][5] = blockNum;
+          array[2][5] = blockNum;
+          array[3][5] = blockNum;
+          break;
+  }
+}
+
+document.onkeydown = function(e) { // キーボードの処理はこのように書きます
+  switch (e.code) {
+      case "Space":
+          genBlock(1);
+          break;
+  }
+  draw();
+}
