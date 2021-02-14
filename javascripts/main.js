@@ -84,6 +84,9 @@ function fall() {
                   under[j] = 0;
               } else {
                   // 下がブロックでブロックのとき
+                  if (move[i][j] == 1) {
+                    resetMove();
+                  }
                   under[j] = 1;
               }
           }
@@ -97,14 +100,24 @@ setInterval(function() {
   draw();
 }, 500); // 0.5秒ごとに表示を更新していきます
 
+var moveFlag = 0; // 動かす対象があるかどうか(0はない、1はあることを示す)
+
+
 function genBlock(blockNum) {
-  switch (blockNum) {
-      case 1:
-          array[0][5] = blockNum;
-          array[1][5] = blockNum;
-          array[2][5] = blockNum;
-          array[3][5] = blockNum;
-          break;
+  if (moveFlag == 0) {
+      switch (blockNum) {
+          case 1:
+              array[0][5] = blockNum;
+              array[1][5] = blockNum;
+              array[2][5] = blockNum;
+              array[3][5] = blockNum;
+              move[0][5] = 1;
+              move[1][5] = 1;
+              move[2][5] = 1;
+              move[3][5] = 1;
+              break;
+      }
+      moveFlag = 1;
   }
 }
 
@@ -147,21 +160,6 @@ function moveBlockLeft() {
   }
 }
 
-function genBlock(blockNum) {
-  switch (blockNum) {
-      case 1:
-          array[0][5] = blockNum;
-          array[1][5] = blockNum;
-          array[2][5] = blockNum;
-          array[3][5] = blockNum;
-          // moveも一緒に変更する
-          move[0][5] = 1;
-          move[1][5] = 1;
-          move[2][5] = 1;
-          move[3][5] = 1;
-          break;
-  }
-}
 
 document.onkeydown = function(e) {
   switch (e.code) {
@@ -177,4 +175,13 @@ document.onkeydown = function(e) {
           break;
   }
   draw();
+}
+
+function resetMove() {
+  moveFlag = 0;
+  for (var i = 0; i < 20; i++) {
+      for (var j = 0; j < 10; j++) {
+          move[i][j] = 0;
+      }
+  }
 }
