@@ -94,8 +94,19 @@ function fall() {
   }
 }
 
+function checkDelete() {
+  for (var i = 19; i >= 0; i--) {
+      if (!array[i].includes(0)) {
+          for (var j = 0; j < 10; j++) {
+              array[i][j] = 0;
+          }
+      }
+  }
+}
+
 draw(); // 読込が完了したらまず表示
 setInterval(function() {
+  checkDelete();
   fall();
   draw();
 }, 500); // 0.5秒ごとに表示を更新していきます
