@@ -134,11 +134,18 @@ function genBlock(blockNum) {
 
 document.onkeydown = function(e) { // キーボードの処理はこのように書きます
   switch (e.code) {
-      case "Space":
-          genBlock(1);
-          break;
-  }
-  draw();
+    case "Space":
+        genBlock(1);
+        break;
+    // ここから下を追加する
+    case "ArrowRight":
+        moveBlockRight();
+        break;
+    case "ArrowLeft":
+        moveBlockLeft();
+        break;
+}
+draw();
 }
 
 function moveBlockRight() {
@@ -169,23 +176,6 @@ function moveBlockLeft() {
       }
       move[i] = newMove;
   }
-}
-
-
-document.onkeydown = function(e) {
-  switch (e.code) {
-      case "Space":
-          genBlock(1);
-          break;
-      // ここから下を追加する
-      case "ArrowRight":
-          moveBlockRight();
-          break;
-      case "ArrowLeft":
-          moveBlockLeft();
-          break;
-  }
-  draw();
 }
 
 function resetMove() {
