@@ -185,9 +185,14 @@ function genBlock(blockNum) {
 }
 
 document.onkeydown = function(e) { // キーボードの処理はこのように書きます
+  // ブロック数（1〜7）の中で乱数を生成
+  var min = 1 ;
+  var max = 7 ;
+  var ramdom = Math.floor( Math.random() * (max + 1 - min) ) + min ;
+
   switch (e.code) {
     case "Space":
-        genBlock(3);
+        genBlock(ramdom);
         break;
     // ここから下を追加する
     case "ArrowRight":
