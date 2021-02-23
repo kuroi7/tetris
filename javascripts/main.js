@@ -22,8 +22,8 @@ var array = [
   [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 ];
 
-var move = l_shape;
-// var move = rod_shape;
+// var move = l_shape;
+var move = rod_shape;
 
 function draw() {
   $('#game').find('tr').each(function(i, elemTr) { // trタグそれぞれに対する処理
@@ -111,7 +111,31 @@ function genBlock(blockNum) {
             console.log('blockNumが1');
             break;
           case 2:
-            // L字
+            // 凸
+            array[0][4] = 1;
+            array[1][3] = 1;
+            array[1][4] = 1;
+            array[1][5] = 1;
+            move[0][4] = 1;
+            move[1][3] = 1;
+            move[1][4] = 1;
+            move[1][5] = 1;
+            console.log('blockNumが2');
+            break;  
+          case 3:
+            // L
+            array[0][5] = 1;
+            array[0][4] = 1;
+            array[1][5] = 1;
+            array[1][4] = 1;
+            move[0][5] = 1;
+            move[0][4] = 1;
+            move[1][5] = 1;
+            move[1][4] = 1;
+            console.log('blockNumが3');
+            break;
+          case 4:
+            // L
             array[0][5] = 1;
             array[1][5] = 1;
             array[2][5] = 1;
@@ -120,9 +144,9 @@ function genBlock(blockNum) {
             move[1][5] = 1;
             move[2][5] = 1;
             move[2][6] = 1;
-            console.log('blockNumが2');
+            console.log('blockNumが4');
             break;
-          case 3:
+          case 5:
             // 逆L
             array[0][5] = 1;
             array[1][5] = 1;
@@ -133,7 +157,7 @@ function genBlock(blockNum) {
             move[2][5] = 1;
             move[2][4] = 1;
             break;
-          case 4:
+          case 6:
             // Z
             array[0][3] = 1;
             array[0][4] = 1;
@@ -144,7 +168,7 @@ function genBlock(blockNum) {
             move[1][4] = 1;
             move[1][5] = 1;
             break;
-          case 5:
+          case 7:
             // 逆Z
             array[0][5] = 1;
             array[0][4] = 1;
@@ -163,7 +187,7 @@ function genBlock(blockNum) {
 document.onkeydown = function(e) { // キーボードの処理はこのように書きます
   switch (e.code) {
     case "Space":
-        genBlock(2);
+        genBlock(3);
         break;
     // ここから下を追加する
     case "ArrowRight":
