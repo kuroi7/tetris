@@ -1,2 +1,2 @@
 # tetris
-テトリス
+javascriptの勉強のためテトリスを作成
