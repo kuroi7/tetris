@@ -14,6 +14,24 @@ td {
 .default {
   background-color: #455A64;
 }
-.stick {
+.rod {
   background-color: #03A9F4;
+}
+.square {
+  background-color: #f3362f;
+}
+.convex {
+  background-color: #dcf403;
+}
+.l_shape {
+  background-color: #03f417;
+}
+.inverted_l {
+  background-color: #a140b9;
+}
+.z_shape {
+  background-color: #c72489;
+}
+.inverted_z {
+  background-color: #638601;
 }
