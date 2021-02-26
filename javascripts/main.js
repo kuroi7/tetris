@@ -30,11 +30,29 @@ function draw() {
       $(elemTr).children().each(function(j, elemTd) { // tdタグそれぞれに対する処理
           $(elemTd).removeClass(); // まずはクラスをすべてなしにする
           switch (array[i][j]) {
-              case 1:
-                  $(elemTd).addClass("stick"); // 1の時にはstickクラスを割り振る
-                  break;
-              default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+            case 1:
+              $(elemTd).addClass("rod"); // 1の時にはrodクラスを割り振る
+              break;
+            case 2:
+              $(elemTd).addClass("square");
+              break;
+            case 3:
+              $(elemTd).addClass("convex");
+              break;
+            case 4:
+              $(elemTd).addClass("l_shape");
+              break;
+            case 5:
+              $(elemTd).addClass("inverted_l");
+              break;
+            case 6:
+              $(elemTd).addClass("z_shape");
+              break;
+            case 7:
+              $(elemTd).addClass("inverted_z");
+              break;
+            default:
+              $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
           }
       })
   });
@@ -123,7 +141,7 @@ function genBlock(blockNum) {
             console.log('blockNumが2');
             break;  
           case 3:
-            // L
+            // 四角
             array[0][5] = 1;
             array[0][4] = 1;
             array[1][5] = 1;
