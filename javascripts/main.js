@@ -32,9 +32,11 @@ function draw() {
           switch (array[i][j]) {
             case 1:
               $(elemTd).addClass("rod"); // 1の時にはrodクラスを割り振る
+              console.log('rod');
               break;
             case 2:
               $(elemTd).addClass("square");
+              console.log('square');
               break;
             case 3:
               $(elemTd).addClass("convex");
