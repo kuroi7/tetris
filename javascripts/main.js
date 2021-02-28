@@ -208,11 +208,11 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
   // ブロック数（1〜7）の中で乱数を生成
   var min = 1 ;
   var max = 7 ;
-  var ramdom = Math.floor( Math.random() * (max + 1 - min) ) + min ;
+  var random = Math.floor( Math.random() * (max + 1 - min) ) + min ;
 
   switch (e.code) {
     case "Space":
-        genBlock(ramdom);
+        genBlock(random);
         break;
     // ここから下を追加する
     case "ArrowRight":
