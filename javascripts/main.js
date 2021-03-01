@@ -221,7 +221,11 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
     case "ArrowLeft":
         moveBlockLeft();
         break;
-}
+    case "ArrowDown":
+        moveBlockDown();
+        // genBlock(random);
+        break;
+    }
 draw();
 }
 
@@ -252,6 +256,25 @@ function moveBlockLeft() {
           }
       }
       move[i] = newMove;
+  }
+}
+
+function moveBlockDown() {
+  for (var i = 19; i >= 0; i--) {
+    var newMove = move[i].concat();
+    for (var j = 1; j < 10; j++) {
+        if (move[i][j] == 1) {
+          // 今いる位置からの残りの高さの値を出して今いる位置に足す → 一番下に移動する
+            array[i + (19 - i)][j] = array[i][j];
+            array[i][j] = 0;
+            newMove[i + (19 - i)] = 1;
+            newMove[i] = 1;
+        }
+    }
+    move[i] = newMove;
+
+    // 動かす対象がないようにする
+    moveFlag = 0;
   }
 }
 
