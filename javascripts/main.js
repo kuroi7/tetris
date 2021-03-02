@@ -29,32 +29,78 @@ function draw() {
   $('#game').find('tr').each(function(i, elemTr) { // trタグそれぞれに対する処理
       $(elemTr).children().each(function(j, elemTd) { // tdタグそれぞれに対する処理
           $(elemTd).removeClass(); // まずはクラスをすべてなしにする
-          switch (array[i][j]) {
+          // ↓↓ブロックナンバーを指定する
+          switch (4) {
             case 1:
-              $(elemTd).addClass("rod"); // 1の時にはrodクラスを割り振る
-              console.log('rod');
+              switch (array[i][j]) {
+                case 1:
+                  $(elemTd).addClass("rod"); // 1の時にはrodクラスを割り振る
+                  console.log('rod');
+                  break;
+                default:
+                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+              }
               break;
             case 2:
-              $(elemTd).addClass("square");
-              console.log('square');
+              switch (array[i][j]) {
+                case 1:
+                  $(elemTd).addClass("square"); // 1の時にはrodクラスを割り振る
+                  console.log("square");
+                  break;
+                default:
+                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+              }
               break;
             case 3:
-              $(elemTd).addClass("convex");
+              switch (array[i][j]) {
+                case 1:
+                  $(elemTd).addClass("convex"); // 1の時にはrodクラスを割り振る
+                  console.log("convex");
+                  break;
+                default:
+                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+              }
               break;
             case 4:
-              $(elemTd).addClass("l_shape");
+              switch (array[i][j]) {
+                case 1:
+                  $(elemTd).addClass("l_shape"); // 1の時にはrodクラスを割り振る
+                  console.log("l_shape");
+                  break;
+                default:
+                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+              }
               break;
             case 5:
-              $(elemTd).addClass("inverted_l");
+              switch (array[i][j]) {
+                case 1:
+                  $(elemTd).addClass("inverted_l"); // 1の時にはrodクラスを割り振る
+                  console.log("inverted_l");
+                  break;
+                default:
+                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+              }
               break;
             case 6:
-              $(elemTd).addClass("z_shape");
+              switch (array[i][j]) {
+                case 1:
+                  $(elemTd).addClass("z_shape"); // 1の時にはrodクラスを割り振る
+                  console.log("z_shape");
+                  break;
+                default:
+                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+              }
               break;
             case 7:
-              $(elemTd).addClass("inverted_z");
+              switch (array[i][j]) {
+                case 1:
+                  $(elemTd).addClass("inverted_z"); // 1の時にはrodクラスを割り振る
+                  console.log("inverted_z");
+                  break;
+                default:
+                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
+              }
               break;
-            default:
-              $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
           }
       })
   });
@@ -89,6 +135,7 @@ function fall() {
                     resetMove();
                   }
                   under[j] = 1;
+                  // break; ←ブロックが下に着いた時点で止めたいけど違うみたい..
               }
           }
       }
