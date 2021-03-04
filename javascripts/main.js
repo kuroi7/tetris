@@ -29,16 +29,16 @@ function draw() {
   $('#game').find('tr').each(function(i, elemTr) { // trタグそれぞれに対する処理
       $(elemTr).children().each(function(j, elemTd) { // tdタグそれぞれに対する処理
           $(elemTd).removeClass(); // まずはクラスをすべてなしにする
+          var blocknum = $('input').attr('id');
+
           // ↓↓ブロックナンバーを指定する
-          switch (4) {
+          switch (Number(blocknum)) {
             case 1:
               switch (array[i][j]) {
                 case 1:
                   $(elemTd).addClass("rod"); // 1の時にはrodクラスを割り振る
                   console.log('rod');
                   break;
-                default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               }
               break;
             case 2:
@@ -47,8 +47,6 @@ function draw() {
                   $(elemTd).addClass("square"); // 1の時にはrodクラスを割り振る
                   console.log("square");
                   break;
-                default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               }
               break;
             case 3:
@@ -57,8 +55,6 @@ function draw() {
                   $(elemTd).addClass("convex"); // 1の時にはrodクラスを割り振る
                   console.log("convex");
                   break;
-                default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               }
               break;
             case 4:
@@ -67,8 +63,6 @@ function draw() {
                   $(elemTd).addClass("l_shape"); // 1の時にはrodクラスを割り振る
                   console.log("l_shape");
                   break;
-                default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               }
               break;
             case 5:
@@ -77,8 +71,6 @@ function draw() {
                   $(elemTd).addClass("inverted_l"); // 1の時にはrodクラスを割り振る
                   console.log("inverted_l");
                   break;
-                default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               }
               break;
             case 6:
@@ -87,8 +79,6 @@ function draw() {
                   $(elemTd).addClass("z_shape"); // 1の時にはrodクラスを割り振る
                   console.log("z_shape");
                   break;
-                default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               }
               break;
             case 7:
@@ -97,9 +87,10 @@ function draw() {
                   $(elemTd).addClass("inverted_z"); // 1の時にはrodクラスを割り振る
                   console.log("inverted_z");
                   break;
-                default:
-                  $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               }
+              break;
+            default:
+              $(elemTd).addClass("default"); // それ以外の時にはdefaultクラスを割り振る
               break;
           }
       })
@@ -164,7 +155,7 @@ var moveFlag = 0; // 動かす対象があるかどうか(0はない、1はあ�
 
 function genBlock(blockNum) {
   if (moveFlag == 0) {
-      switch (blockNum) {
+    switch (blockNum) {
           case 1:
             // 棒
             array[0][5] = 1;
@@ -175,6 +166,7 @@ function genBlock(blockNum) {
             move[1][5] = 1;
             move[2][5] = 1;
             move[3][5] = 1;
+
             console.log('blockNumが1');
             break;
           case 2:
@@ -187,6 +179,7 @@ function genBlock(blockNum) {
             move[1][3] = 1;
             move[1][4] = 1;
             move[1][5] = 1;
+
             console.log('blockNumが2');
             break;  
           case 3:
@@ -199,6 +192,7 @@ function genBlock(blockNum) {
             move[0][4] = 1;
             move[1][5] = 1;
             move[1][4] = 1;
+
             console.log('blockNumが3');
             break;
           case 4:
@@ -211,6 +205,7 @@ function genBlock(blockNum) {
             move[1][5] = 1;
             move[2][5] = 1;
             move[2][6] = 1;
+
             console.log('blockNumが4');
             break;
           case 5:
@@ -223,6 +218,7 @@ function genBlock(blockNum) {
             move[1][5] = 1;
             move[2][5] = 1;
             move[2][4] = 1;
+
             break;
           case 6:
             // Z
@@ -234,6 +230,7 @@ function genBlock(blockNum) {
             move[0][4] = 1;
             move[1][4] = 1;
             move[1][5] = 1;
+
             break;
           case 7:
             // 逆Z
@@ -245,6 +242,7 @@ function genBlock(blockNum) {
             move[0][4] = 1;
             move[1][4] = 1;
             move[1][3] = 1;
+
             break;
       }
       moveFlag = 1;
@@ -260,6 +258,10 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
   switch (e.code) {
     case "Space":
         genBlock(random);
+        // うまくいかない、、やりたいことは、classnameから要素？を取得して、取得した要素にidを付与したい
+        // var element = document.getElementsByClassName('blocknum');
+        // console.log(element);    
+        // element.setAttribute('id', 1);
         break;
     // ここから下を追加する
     case "ArrowRight":
