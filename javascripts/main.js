@@ -260,8 +260,8 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
         genBlock(random);
         // うまくいかない、、やりたいことは、classnameから要素？を取得して、取得した要素にidを付与したい
         // var element = document.getElementsByClassName('blocknum');
-        // console.log(element);    
-        // element.setAttribute('id', 1);
+        // console.log($('input').attr('id'));    
+        addIdBlock(random);
         break;
     // ここから下を追加する
     case "ArrowRight":
@@ -277,6 +277,13 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
     }
 draw();
 }
+
+function addIdBlock(blocknum){
+  var element = document.getElementsByClassName('blocknum');
+  element[0].setAttribute("id", blocknum);  
+  console.log(element);
+}
+
 
 function moveBlockRight() {
   for (var i = 19; i >= 0; i--) {
