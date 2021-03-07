@@ -44,7 +44,7 @@ function draw() {
             case 2:
               switch (array[i][j]) {
                 case 1:
-                  $(elemTd).addClass("square"); // 1の時にはrodクラスを割り振る
+                  $(elemTd).addClass("square"); 
                   console.log("square");
                   break;
               }
@@ -52,7 +52,7 @@ function draw() {
             case 3:
               switch (array[i][j]) {
                 case 1:
-                  $(elemTd).addClass("convex"); // 1の時にはrodクラスを割り振る
+                  $(elemTd).addClass("convex"); 
                   console.log("convex");
                   break;
               }
@@ -60,7 +60,7 @@ function draw() {
             case 4:
               switch (array[i][j]) {
                 case 1:
-                  $(elemTd).addClass("l_shape"); // 1の時にはrodクラスを割り振る
+                  $(elemTd).addClass("l_shape"); 
                   console.log("l_shape");
                   break;
               }
@@ -68,7 +68,7 @@ function draw() {
             case 5:
               switch (array[i][j]) {
                 case 1:
-                  $(elemTd).addClass("inverted_l"); // 1の時にはrodクラスを割り振る
+                  $(elemTd).addClass("inverted_l"); 
                   console.log("inverted_l");
                   break;
               }
@@ -76,7 +76,7 @@ function draw() {
             case 6:
               switch (array[i][j]) {
                 case 1:
-                  $(elemTd).addClass("z_shape"); // 1の時にはrodクラスを割り振る
+                  $(elemTd).addClass("z_shape"); 
                   console.log("z_shape");
                   break;
               }
@@ -84,7 +84,7 @@ function draw() {
             case 7:
               switch (array[i][j]) {
                 case 1:
-                  $(elemTd).addClass("inverted_z"); // 1の時にはrodクラスを割り振る
+                  $(elemTd).addClass("inverted_z"); 
                   console.log("inverted_z");
                   break;
               }
@@ -166,8 +166,6 @@ function genBlock(blockNum) {
             move[1][5] = 1;
             move[2][5] = 1;
             move[3][5] = 1;
-
-            console.log('blockNumが1');
             break;
           case 2:
             // 凸
@@ -179,8 +177,6 @@ function genBlock(blockNum) {
             move[1][3] = 1;
             move[1][4] = 1;
             move[1][5] = 1;
-
-            console.log('blockNumが2');
             break;  
           case 3:
             // 四角
@@ -192,8 +188,6 @@ function genBlock(blockNum) {
             move[0][4] = 1;
             move[1][5] = 1;
             move[1][4] = 1;
-
-            console.log('blockNumが3');
             break;
           case 4:
             // L
@@ -205,8 +199,6 @@ function genBlock(blockNum) {
             move[1][5] = 1;
             move[2][5] = 1;
             move[2][6] = 1;
-
-            console.log('blockNumが4');
             break;
           case 5:
             // 逆L
@@ -218,7 +210,6 @@ function genBlock(blockNum) {
             move[1][5] = 1;
             move[2][5] = 1;
             move[2][4] = 1;
-
             break;
           case 6:
             // Z
@@ -230,7 +221,6 @@ function genBlock(blockNum) {
             move[0][4] = 1;
             move[1][4] = 1;
             move[1][5] = 1;
-
             break;
           case 7:
             // 逆Z
@@ -242,7 +232,6 @@ function genBlock(blockNum) {
             move[0][4] = 1;
             move[1][4] = 1;
             move[1][3] = 1;
-
             break;
       }
       moveFlag = 1;
@@ -258,10 +247,7 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
   switch (e.code) {
     case "Space":
         genBlock(random);
-        // うまくいかない、、やりたいことは、classnameから要素？を取得して、取得した要素にidを付与したい
-        // var element = document.getElementsByClassName('blocknum');
-        // console.log($('input').attr('id'));    
-        addIdBlock(random);
+        addIdBlockTag(random);
         break;
     // ここから下を追加する
     case "ArrowRight":
@@ -272,18 +258,16 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
         break;
     case "ArrowDown":
         moveBlockDown();
-        // genBlock(random);
         break;
     }
 draw();
 }
 
-function addIdBlock(blocknum){
+function addIdBlockTag(blocknum){
   var element = document.getElementsByClassName('blocknum');
   element[0].setAttribute("id", blocknum);  
   console.log(element);
 }
-
 
 function moveBlockRight() {
   for (var i = 19; i >= 0; i--) {
