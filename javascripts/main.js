@@ -269,6 +269,19 @@ function addIdBlockTag(blocknum){
   console.log(element);
 }
 
+// ブロックにユニークなidを付与するためカウンタを作成
+function countUpValue(){
+  //カウンタの初期値を設定
+  var countUpValue = 0;
+
+  //カウントアップする関数 countUp の定義
+    //カウンタに 1 を加算
+    countUpValue++;
+    //カウンタの値を HTML 内の counter に表示
+    document.getElementById("counter").innerHTML=cnt; 
+    console.log(countUpValue);
+}
+
 function moveBlockRight() {
   for (var i = 19; i >= 0; i--) {
       var newMove = move[i].concat();
