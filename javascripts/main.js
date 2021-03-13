@@ -248,6 +248,7 @@ document.onkeydown = function(e) { // キーボードの処理はこのように
     case "Space":
         genBlock(random);
         addIdBlockTag(random);
+        countUpValue();
         break;
     // ここから下を追加する
     case "ArrowRight":
@@ -278,7 +279,15 @@ function countUpValue(){
     //カウンタに 1 を加算
     countUpValue++;
     //カウンタの値を HTML 内の counter に表示
-    document.getElementById("counter").innerHTML=cnt; 
+    // document.getElementById("counter").innerHTML=cnt; 
+    var block = $('td').attr('class');
+    console.log(block);
+    // block.addClass(countUpValue); 
+
+
+    // やりたいこと、落ちてくるブロックに対してユニークキーを設定して一個一個のブロックをユニークにしたい。
+    // そのユニークキーをもとに色を設定して保持するようにしたい
+    // そうすることでブロックごとに色を保持することができる
     console.log(countUpValue);
 }
 
